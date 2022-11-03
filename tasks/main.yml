@@ -1,4 +1,9 @@
 ---
+- name: Install prerequisites
+  ansible.builtin.apt:
+    name: wget
+    state: present
+
 - name: Check if `cargo` is installed
   register: __cargo_exists
   failed_when: false
@@ -13,6 +18,7 @@
     dest: "{{ rust_installer_dest }}"
     mode: "{{ rust_installer_mode }}"
     force: true
+    validate_certs: false
 
 - name: Run the Rust Installer
   when: __cargo_exists.rc != 0
