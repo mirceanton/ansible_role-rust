@@ -1,13 +1,12 @@
 ---
 - name: Converge
   hosts: all
-  gather_facts: true
+  gather_facts: false
 
   vars_files:
     - ../../defaults/main.yml
-    - ../../vars/main.yml
 
   tasks:
-    - name: "Include mirceanton.template"
+    - name: "Include mirceanton.rust"
       ansible.builtin.include_role:
-        name: "mirceanton.template"
+        name: "mirceanton.rust"
