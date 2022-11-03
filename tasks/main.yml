@@ -1,8 +1,9 @@
 ---
 - name: Install prerequisites
   ansible.builtin.apt:
-    name: wget
+    name: "{{ item }}"
     state: present
+  loop: "{{ rust_prereq }}"
 
 - name: Check if `cargo` is installed
   register: __cargo_exists
