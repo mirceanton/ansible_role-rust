@@ -1,7 +1,7 @@
 Ansible Role: Rust
 ==================
 
-A brief description of the role goes here.
+ An Ansible role that installs Rust and Cargo.
 
 Requirements
 ------------
