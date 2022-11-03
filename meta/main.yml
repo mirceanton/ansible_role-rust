@@ -1,8 +1,8 @@
 galaxy_info:
   author: Mircea-Pavel ANTON
   namespace: mirceanton
-  role_name: template
-  description: Template Ansible role.
+  role_name: rust
+  description: Ansible Role that install Rust and Cargo.
   company: mirceanton
 
   license: license (MIT)
@@ -21,6 +21,8 @@ galaxy_info:
         - focal     # 20.04
         - jammy     # 22.04
 
-  galaxy_tags: []
+  galaxy_tags:
+    - rust
+    - cargo
 
 dependencies: []
