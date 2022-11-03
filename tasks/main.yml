@@ -16,6 +16,5 @@
 
 - name: Run the Rust Installer
   when: __cargo_exists.rc != 0
-  when: __cargo_exists is failed
   ansible.builtin.shell:
     cmd: "{{ rust_installer_dest }} -y"
