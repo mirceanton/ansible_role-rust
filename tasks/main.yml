@@ -1,2 +1,27 @@
 ---
-# tasks file for template
+- name: Install prerequisites
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ rust_prereq }}"
+
+- name: Check if `cargo` is installed
+  register: __cargo_exists
+  ignore_errors: true
+  changed_when: false
+  ansible.builtin.shell:
+    cmd: . ~/.bashrc; command -v cargo
+
+- name: Download the Rust Installer
+  when: __cargo_exists.rc != 0
+  ansible.builtin.get_url:
+    url: "{{ rust_installer_url }}"
+    dest: "{{ rust_installer_dest }}"
+    mode: "{{ rust_installer_mode }}"
+    force: true
+    validate_certs: false
+
+- name: Run the Rust Installer
+  when: __cargo_exists.rc != 0
+  ansible.builtin.shell:
+    cmd: "{{ rust_installer_dest }} -y"

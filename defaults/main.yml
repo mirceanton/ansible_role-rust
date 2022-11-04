@@ -1,2 +1,12 @@
 ---
-# defaults file for template
+# Prerequired packages for the rust installer script to run
+rust_prereq: [ wget ]
+
+# The URL where the rust installer script is found
+rust_installer_url: https://sh.rustup.rs
+
+# The path at which to download the rust installer script
+rust_installer_dest: /tmp/sh.rustup.rs
+
+# The permissions to set to the downloaded rust installer script
+rust_installer_mode: 'u=rwx,g=rx,o=rx'
