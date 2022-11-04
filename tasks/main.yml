@@ -7,10 +7,14 @@
 
 - name: Check if `cargo` is installed
   register: __cargo_exists
-  failed_when: false
+  ignore_errors: true
   changed_when: false
   ansible.builtin.shell:
-    cmd: command -v cargo
+    cmd: . ~/.bashrc; command -v cargo
+
+- name: Show cmd out
+  ansible.builtin.debug:
+    var: __cargo_exists
 
 - name: Download the Rust Installer
   when: __cargo_exists.rc != 0

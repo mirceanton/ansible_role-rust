@@ -9,4 +9,4 @@
   tasks:
     - name: Find the cargo command
       ansible.builtin.shell:
-        cmd: command -v cargo
+        cmd: . ~/.bashrc; command -v cargo
